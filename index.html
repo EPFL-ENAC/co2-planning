@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Co2 planning</title>
+  <script src="codebase/dhtmlxgantt.js"></script>
+  <link href="codebase/dhtmlxgantt.css" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    #gantt_here {
+      width: 100vw;
+      height: 100vh;
+      min-height: 100%;
+      box-sizing: border-box;
+      font-size: 18px;                 /* change overall font-size */
+    }
+    h1 {
+      display: none; /* Hide the h1 for full-page Gantt */
+    }
+    .gantt-btn {
+      position: absolute;
+      z-index: 10;
+      bottom: 20px;
+      left: 20px;
+      padding: 8px 18px;
+      background: #ffffff;
+      border: 1px solid #d4d4d4;
+      border-radius: 4px;
+      color: #444;
+      font-family: Arial;
+      font-size: 15px;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      transition: background 0.2s, border 0.2s;
+    }
+    .gantt-btn:hover {
+      background: #e9e9e9;
+      border-color: #bcbcbc;
+    }
+    .gantt_task_line{
+        background-color: #FF0000 !important;
+        border: 1px solid #b30000  !important; /* Default border color */
+    }
+    /* Only color tasks that have a parent */
+    .gantt_task_line.child-task {
+        background-color: #007480 !important; /* Child: light blue */
+        border: 1px solid #0288d1 !important;
+    }
+    /* Add a specific style for "[Specs]" tasks */
+    .gantt_task_line.specs-task {
+        background-color: #daba07 !important; /* Gold background */
+        border: 1px solid #DAA520 !important; /* Darker gold border */
+    }
+    /* Ensure specs that are children stay yellow (higher specificity) */
+    .gantt_task_line.specs-task.child-task {
+        background-color: #daba07 !important;
+        border: 1px solid #DAA520 !important;
+    }
+    /* ROW / FONT sizing: adapter ces valeurs au même que JS (row_height / bar_height) */
+    .gantt_tree_cell, .gantt_grid_row .gantt_cell {
+      font-size: 20px;      /* texte colonne / grille */
+      line-height: 60px;    /* = gantt.config.row_height */
+    }
+    .gantt_task_row { height: 60px !important; } /* = gantt.config.row_height */
+    .gantt_task_content, .gantt_task_text {
+      font-size: 18px;      /* texte dans la barre */
+      line-height: 30px;    /* = gantt.config.bar_height */
+    }
+    
+  </style>
+  </head>
+  <body>
+    <h1>dhtmlxGantt-Co2-calc</h1>
+    <div id="gantt_here"></div>
+    <script type="text/javascript">
+        gantt.config.xml_date = "%Y-%m-%d %H:%i";
+
+        // Color only tasks that have a parent or are marked as specs
+        gantt.templates.task_class = function(start, end, task){
+            var classes = [];
+            // use explicit flag set by the parser instead of relying on "[Specs]" text
+            if (task.isSpec) classes.push("specs-task");
+            if (task.parent && task.parent != 0) classes.push("child-task");
+            return classes.join(" ");
+        };
+
+        // Lightbox config
+        gantt.config.lightbox.sections = [
+            {name:"name", height:30, map_to:"text", type:"textarea", focus:true},
+            {name:"description", height:70, map_to:"description", type:"textarea", focus:true},
+            {name:"complexity", height:30, map_to:"complexity", type:"select", options:[
+                {key: 1, label: "1 (Low)"},
+                {key: 2, label: "2"},
+                {key: 3, label: "3"},
+                {key: 4, label: "4"},
+                {key: 5, label: "5 (High)"},
+                {key: "", label: ""}
+            ]},
+            {name:"time", type:"duration", map_to:"auto"}
+        ];
+
+        // Set main scale to week and top scale to month
+        gantt.config.scale_unit = "week";
+        gantt.config.date_scale = "%m-%d";
+        gantt.config.subscales = [
+            {unit: "month", step: 1, date: "%F %Y"}
+        ];
+        gantt.config.scale_height = 80; 
+        gantt.config.min_column_width = 140;
+
+        // Add columns: text, duration (weeks), complexity, progress
+        gantt.config.columns = [
+            {name:"text", label:"name", width:"*", tree:true },
+            {name:"duration_weeks", label:"Durée (semaines)", align:"center", width:120, template:function(obj){
+                return Math.round((obj.duration||0)/7);
+            },},
+            {name:"complexity", label:"Complexité", align:"center", width:100, template:function(obj){
+                return obj.complexity || "";
+            }},
+            {name:"add", label:"", width:44 }
+        ];
+
+        gantt.config.order_branch = true;
+        gantt.config.order_branch_free = true;
+
+        // Row / bar sizing (set BEFORE gantt.init)
+        gantt.config.row_height = 60;   // change ici la hauteur de la ligne (px)
+        gantt.config.bar_height = 30;   // change ici la hauteur de la barre (px) (<= row_height)
+        // optional: ajuster taille globale du texte du conteneur
+        document.getElementById('gantt_here').style.fontSize = '16px';
+
+        // helper date functions
+        function pad(n){ return n<10 ? '0'+n : String(n); }
+        function formatGanttDate(d){
+            return d.getFullYear() + '-' + pad(d.getMonth()+1) + '-' + pad(d.getDate()) + ' 00:00';
+        }
+        function toDateFromDDMM(ddmm, year){
+            const parts = ddmm.split('.').map(x=>parseInt(x,10));
+            return new Date(year, parts[1]-1, parts[0], 0, 0, 0);
+        }
+        function daysInclusive(start, end){
+            const ms = 24*60*60*1000;
+            return Math.round((end - start)/ms) + 1;
+        }
+
+        // parse markdown -> gantt data
+        function parseMarkdownToGanttData(markdown, baseYear){
+            const sections = markdown.split(/^###\s*/m).slice(1);
+            const data = [];
+            const links = [];
+            let year = baseYear || (new Date()).getFullYear();
+            let prevStartMonth = null;
+            let linkId = 1;
+
+            sections.forEach((section, idx) => {
+                const headerLine = (section.split('\n')[0] || '').trim();
+                // match header with optional "⚡" and optional "S" label and dates dd.mm - dd.mm
+                const headerMatch = headerLine.match(/⚡?\s*(S?\d+)?\s*([0-3]?\d\.\d{1,2})\s*-\s*([0-3]?\d\.\d{1,2})/i);
+                if(!headerMatch) return; // skip malformed section
+
+                const sprintLabel = headerMatch[1] ? headerMatch[1] : `${idx+1}`;
+                const startDDMM = headerMatch[2];
+                const endDDMM = headerMatch[3];
+
+                const startMonth = parseInt(startDDMM.split('.')[1],10);
+                // handle year rollover (e.g. Dec -> Jan)
+                if(prevStartMonth === null) prevStartMonth = startMonth;
+                else if(startMonth < prevStartMonth) year++;
+                prevStartMonth = startMonth;
+
+                const startDateObj = toDateFromDDMM(startDDMM, year);
+                let endYear = year;
+                const endMonth = parseInt(endDDMM.split('.')[1],10);
+                if(endMonth < startMonth) endYear = year + 1;
+                const endDateObj = toDateFromDDMM(endDDMM, endYear);
+                const duration = daysInclusive(startDateObj, endDateObj);
+
+                const sprintId = idx + 1;
+                // normalize label: remove leading "S" if present so it becomes "Sprint 1" instead of "Sprint S1"
+                let rawLabel = headerMatch[1] ? headerMatch[1] : String(idx+1);
+                let labelNumber = String(rawLabel).replace(/^S/i, '').trim();
+                if (!labelNumber) labelNumber = String(idx+1);
+                data.push({
+                    id: sprintId,
+                    text: `Sprint ${labelNumber}`,
+                    start_date: formatGanttDate(startDateObj),
+                    duration: duration,
+                    progress: 0
+                });
+
+                // extract top-level tasks: lines starting with "- " with no leading spaces
+                const lines = section.split('\n');
+                let taskIndex = 0;
+                for(let i=1;i<lines.length;i++){ // start from 1 to skip header line
+                    const line = lines[i];
+                    const topMatch = line.match(/^\s*-\s+(.+)$/);
+                    if(topMatch && line.search(/^\s*-/) === 0){ // top-level list item
+                        taskIndex++;
+                        let title = topMatch[1].trim();
+                        // detect and strip "[Specs]" prefix on list items and mark as spec
+                        let isSpecTask = false;
+                        const tSpec = title.match(/^\s*\[?\s*Specs\s*\]?\s*[:\-–]?\s*(.*)$/i);
+                        if (tSpec) {
+                            isSpecTask = true;
+                            title = (tSpec[1] || '').trim() || 'Specs';
+                        }
+                        // collect indented description lines following the task
+                        let descLines = [];
+                        let j = i+1;
+                        while(j < lines.length && (lines[j].match(/^\s{4,}.+/) || lines[j].trim() === '')){
+                            if(lines[j].match(/^\s{4,}(.+)/)){
+                                descLines.push(lines[j].replace(/^\s{4,}/,''));
+                            }
+                            j++;
+                        }
+                        i = j-1; // advance outer loop
+                        const taskId = sprintId*100 + taskIndex;
+                        data.push({
+                            id: taskId,
+                            text: title,
+                            parent: sprintId,
+                            start_date: formatGanttDate(startDateObj),
+                            duration: duration,
+                            description: descLines.join('\n').trim(),
+                            isSpec: isSpecTask
+                        });
+                        links.push({ id: linkId++, source: sprintId, target: taskId, type: "1" });
+                    }
+                }
+                // also treat any "[Specs]" / "Specs" lines in the section as a child task (yellow)
+                // create visible text WITHOUT the "[Specs]" prefix, but mark isSpec=true so CSS applies
+                const specsRegex = /^\s*(?:\[(?:Specs)\]|\bSpecs\b)\s*[:\-–]?\s*(.+)?$/gmi;
+                let specMatch;
+                while((specMatch = specsRegex.exec(section)) !== null){
+                    const body = specMatch[1] && specMatch[1].trim() ? specMatch[1].trim() : 'Specs';
+                    const displayText = body; // no "[Specs]" prefix in visible label
+                    // avoid duplicating if a task with same text already exists
+                    const exists = data.some(d => d.parent === sprintId && d.text === displayText);
+                    if(!exists){
+                        taskIndex++;
+                        const taskId = sprintId*100 + taskIndex;
+                        data.push({
+                            id: taskId,
+                            text: displayText,
+                            parent: sprintId,
+                            start_date: formatGanttDate(startDateObj),
+                            duration: duration,
+                            isSpec: true
+                        });
+                        links.push({ id: linkId++, source: sprintId, target: taskId, type: "1" });
+                    }
+                }
+            });
+
+            return { data: data, links: links };
+        }
+
+        // initialize gantt once
+        gantt.init("gantt_here");
+
+        // fetch markdown relatively (works on github pages if file is in same folder)
+        const mdFileName = 'Project_backlog.md';
+        const mdPath = './' + encodeURIComponent(mdFileName); // encode spaces
+        fetch(mdPath)
+            .then(response => {
+                if(!response.ok) throw new Error('fetch failed: ' + response.status);
+                return response.text();
+            })
+            .then(markdown => {
+                const ganttData = parseMarkdownToGanttData(markdown, 2025); // base year 2025
+                console.log('parsed ganttData', ganttData);
+                gantt.clearAll();
+                gantt.parse(ganttData);
+            })
+            .catch(error => {
+                console.error('Erreur lors de la lecture du fichier Markdown :', error);
+                // fallback: keep existing hardcoded data if desired (optional)
+            });
+
+        window.addEventListener("resize", function() {
+            gantt.setSizes();
+        });
+
+        function toggleGrid() {
+            gantt.config.show_grid = !gantt.config.show_grid;
+            gantt.render();
+        }
+    </script>
+    <button class="gantt-btn" onclick="toggleGrid()">Afficher/Masquer la grille</button>
+</body>
+</html>
