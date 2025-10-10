@@ -28,9 +28,9 @@
     
 - Gestions utilisateuri.ces
 
-- Déplacements pro (Specs & Data)
+- [Specs] (Specs) Déplacements pro 
 
-- Résultats (Specs)
+- [Specs] (Specs) Résultats 
 
 ### ⚡S2  19.11 - 02.12
 
@@ -42,7 +42,7 @@
     User flow Gestionnaire Métier complet/restreint
     Utilisateurice principal/standard
     
-- Déplacements pro 🟢
+- Déplacements pro
     
     Selon *Annexe 6 3.3.4* 
     Import data en csv (manuel)
@@ -67,13 +67,13 @@
     Améliorations des pages d'accueil minimalistes
     Ergonomie améliorée (accessibilité)
 
-- (Specs) Mon labo : Specs & Data
+- [Specs] (Specs) Mon labo 
 
-- (Specs) Achats : Specs & Data
+- [Specs] (Specs) Achats 
 
 ### ⚡S3 03.12 - 18.12 
 
-- Résultats
+- Résultats (MVP 1/2)
     Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
     Calculs
     Comparaison temporelle
@@ -97,12 +97,11 @@
     
     gestion des accès/visualisations par utilisateurs
     
-- Mon labo
-- [Specs] Infrastructure
+- [Specs] (Specs) Infrastructure
 
 ### ⚡S4 31.12 - 19.01
 
-- Achats (Première version)
+- Achats (MVP 1/2)
     
     *Annexe 6 3.3.7.1*  
     
@@ -150,11 +149,11 @@
 
 - Refactor intermédiaire   
 
-- [Specs] Services internes
+- [Specs] (Specs) Services internes
 
 ### ⚡S5 20.01 - 10.02
 
-- Achats (Version finale)
+- Achats (2/2)
     
     *Annexe 6 3.3.7.1*
     
@@ -223,9 +222,9 @@
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
     
 
-- [Specs] Conso. électrique équipements
+- [Specs] (Specs) Conso. électrique équipements
 
-- [Specs] Impact des services cloud
+- [Specs] (Specs) Impact des services cloud
 
 ### ⚡S6 11.02 - 02.03
 
@@ -256,6 +255,12 @@
     (optionel) modif cat. et sous cat depuis interface gestion métier
     
     Calcul CO2-eq par équipement
+
+- Résultats (2/2)
+    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
+    Calculs
+    Comparaison temporelle
+    export des résultats CSV/PDF
     
 - Services Internes 
     
@@ -269,17 +274,17 @@
     
 - Déploiement version Alpha α
 
-- [Specs] Emissions directes
+- [Specs] (Specs) Emissions directes
 
-- [Specs] Alimentation et pendularité
+- [Specs] (Specs) Alimentation et pendularité
 
-- [Specs] Energie grise
+- [Specs] (Specs) Energie grise
 
 
 
 ### ⚡S7 03.03 - 23.03
 - Refactor intermédiaire
-- Impact des services cloud (opt)
+- Impact Cloud externes
     
     *Annexe 6 3.3.9* 
     
@@ -287,23 +292,21 @@
     
     type de services et facteurs mis à jour dans Métier
     
-- Emissions directes (opt)
+- Emissions directes 
     
     Import data en csv
     
     Saisie des émissions directes du laboratoire
     
-- Alimentation et pendularité (opt)
+- Alimentation et pendularité 
     
     calcul  avec data fourni par Métier et module labo
     
-- Energie grise (opt)
+- Energie grise 
     
     calcul avec data fourni par Métier
-    
 
 - [Specs] Simulation de projet
-
 - [Specs] Déchets
 
 ### ⚡S8 23.03 - 13.04
@@ -313,21 +316,15 @@
     Intégrations des retours
     
     corriger bugs et imprévus
-    
-- Déchets (opt)
+
+- Déchets 
     
     calcul avec data fourni par Métier et module labo
     
-
-[Specs] Simulation de projet
-
 ### ⚡S9 14.04 - 04.05
 
-- Simulation de projet (opt)
+- Simulation de projet 
 - Refactor final
-    
-
-[Specs] : S10
 
 ### ⚡S10 05.05 - 26.05
 
@@ -339,6 +336,3 @@
     
 - Déploiement version Beta β
 
-### ⚡ Tests utilisateur.ices 01.06 - 30.06
-
-### ⚡ Hypercare 01.07 - 31.07
