@@ -5,8 +5,11 @@
     
     Structure de navigation entre les différents modules de l'application,
     différentes pour chaque rôles
+    Navigation inter-modules
+  
+- Internationalisation
 
-- Pages d'accueil minimalistes (Login, Unit selection, Year selection & Home)
+- Pages d'accueil minimalistes : Login, selections & Home
     Pages : Login, Unit selection, Year selection & Home
 
 - Schéma de DB et API REST
@@ -25,34 +28,27 @@
     
 - Gestions utilisateuri.ces
 
-- [Specs] Déplacements pro
+- Déplacements pro (Specs & Data)
 
-- [Specs] Résultats
+- Résultats (Specs)
 
 ### ⚡S2  19.11 - 02.12
 
-Fixes de S1
-
-- Interface admins et gestion des 5 rôles 
-    *CC 3.7.8*
-    
-    Gestionnaire IT
-    
-    Gestionnaire Métier complet/restreint
-    
+- Interfaces admins (IT/métier)
+      
+    Selon *CC 3.7.8*
+    Gestion des 5 rôles 
+    User flow Gestionnaire IT
+    User flow Gestionnaire Métier complet/restreint
     Utilisateurice principal/standard
     
-- Déplacement pro 🟢
+- Déplacements pro 🟢
     
-    *Annexe 6 3.3.4* 
-    
+    Selon *Annexe 6 3.3.4* 
     Import data en csv (manuel)
-    
     Saisie déplacements, km, moyen de transport, etc..
-    
     Calcul Co2 en temps réel avec l’aide des facteurs
-    
-    intégrations facteurs d’émissions
+    Intégrations facteurs d’émissions
     
     Messages d’erreurs et validations
     
@@ -68,27 +64,24 @@ Fixes de S1
     
 - Améliorations UX
     
+    Améliorations des pages d'accueil minimalistes
     Ergonomie améliorée (accessibilité)
-    
 
-[Specs] Mon labo
+- (Specs) Mon labo : Specs & Data
 
-[Specs] Achat
+- (Specs) Achats : Specs & Data
 
 ### ⚡S3 03.12 - 18.12 
 
-- Fixes de S2
-- Résultats visu et calculs 🟢
-    
-    Graphiques, filtres interactifs pour mieux analyser les données
-    
-    comparaison temporelle
-    
+- Résultats
+    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
+    Calculs
+    Comparaison temporelle
     export des résultats CSV/PDF
     
-- Mon labo  🟢
+- Mon labo 
     
-    *Annexe 6 3.3.3*
+    Selon *Annexe 6 3.3.3*
     
     Saisie EPT, surfaces, infos de base
     
@@ -104,15 +97,12 @@ Fixes de S1
     
     gestion des accès/visualisations par utilisateurs
     
+- Mon labo
+- [Specs] Infrastructure
 
-[Specs] Infrastructure
+### ⚡S4 31.12 - 19.01
 
-
-
-### ⚡S4 19.12 - 19.01
-
-- Fixes de S3
-- Achats **Poc** 🟡🟢
+- Achats (Première version)
     
     *Annexe 6 3.3.7.1*  
     
@@ -150,21 +140,21 @@ Fixes de S1
     
     outil IA EPFL (optionnel)
     
-- Documentation user help
+- Documentation utilisateur.ices
     
     CMS pour documentation, système de gestion de contenu pour textes explicatifs sans passer par le prestataire
     
     interface documentation
     
     3 pages; explication durabilité, info et liens ress externe, info et liens ress intern
-    
 
-[Specs] Services interne
+- Refactor intermédiaire   
+
+- [Specs] Services internes
 
 ### ⚡S5 20.01 - 10.02
 
-- Fixes de S4
-- Achats **Done**
+- Achats (Version finale)
     
     *Annexe 6 3.3.7.1*
     
@@ -202,7 +192,7 @@ Fixes de S1
     
     outil IA EPFL (optionnel)
     
-- Infrastucture 🟡
+- Infrastucture
     
     *Annexe 6 3.3.5.1* 
     
@@ -233,14 +223,13 @@ Fixes de S1
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
     
 
-[Specs] Consommation électrique
+- [Specs] Conso. électrique équipements
 
-[Specs] Impact des services cloud
+- [Specs] Impact des services cloud
 
 ### ⚡S6 11.02 - 02.03
 
-- Fixes de S5
-- Consommation électrique équipements  **🟡
+- Consommation électrique équipements 
     
     *Annexe 6 3.3.6*
     
@@ -268,7 +257,7 @@ Fixes de S1
     
     Calcul CO2-eq par équipement
     
-- Services Interne  🟠
+- Services Internes 
     
     *Annexe 6 3.3.8* 
     
@@ -278,7 +267,19 @@ Fixes de S1
     
     liste de centres et plateformes modif depuis Métier
     
-- Impact des services cloud (optionel)  🟠
+- Déploiement version Alpha α
+
+- [Specs] Emissions directes
+
+- [Specs] Alimentation et pendularité
+
+- [Specs] Energie grise
+
+
+
+### ⚡S7 03.03 - 23.03
+- Refactor intermédiaire
+- Impact des services cloud (opt)
     
     *Annexe 6 3.3.9* 
     
@@ -286,47 +287,34 @@ Fixes de S1
     
     type de services et facteurs mis à jour dans Métier
     
-
-[Specs] Emissions directs
-
-[Specs] Alimentation et pendularité
-
-[Specs] Energie grise
-
-
-
-### ⚡S7 03.03 - 23.03
-
-- Fixes S6
-- émissions directes (optionnel) 🟡
+- Emissions directes (opt)
     
     Import data en csv
     
     Saisie des émissions directes du laboratoire
     
-- Alimentation et pendularité (optionel) 🟡
+- Alimentation et pendularité (opt)
     
     calcul  avec data fourni par Métier et module labo
     
-- Energie grise (optionel) 🟡
+- Energie grise (opt)
     
     calcul avec data fourni par Métier
     
 
-[Specs] Simulation de projet
+- [Specs] Simulation de projet
 
-[Specs] Déchets
+- [Specs] Déchets
 
 ### ⚡S8 23.03 - 13.04
 
-- Fixes S7
-- Gestion des bugs et ajouts intégrations des retours
+- Gestion des bugs, intégration des retours
     
     Intégrations des retours
     
     corriger bugs et imprévus
     
-- Déchets (optionel) 🟡
+- Déchets (opt)
     
     calcul avec data fourni par Métier et module labo
     
@@ -335,30 +323,22 @@ Fixes de S1
 
 ### ⚡S9 14.04 - 04.05
 
-- Fixes S8
-- Simulation de projet (optionnel) 🔴
-- Gestion des bugs et ajouts intégrations des retours
-    
-    Intégrations des retours
-    
-    corriger bugs et imprévus
+- Simulation de projet (opt)
+- Refactor final
     
 
 [Specs] : S10
 
 ### ⚡S10 05.05 - 26.05
 
-- Fixes S9
-- Gestion des bugs et intégrations des retours
+- Gestion des bugs, intégrations des retours
     
     Intégrations des retours
     
     corriger bugs et imprévus
     
-- Intégration des retours
-    
-    Ajustements UX/UI
-    
-    Corrections mineures
-    
-    Préparation à la mise en production
+- Déploiement version Beta β
+
+### ⚡ Tests utilisateur.ices 01.06 - 30.06
+
+### ⚡ Hypercare 01.07 - 31.07
