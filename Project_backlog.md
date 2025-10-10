@@ -1,41 +1,33 @@
 
 ### ⚡S1 27.10 - 18.11
 
-- API REST sécurisée (lecture)
+- Squelette de l’architecture globale & navigation
     
-    *CC 3.8.2*
-    
-    Mise en place d'une API sécurisée avec authentification
-    
-    documentation technique format OpenAPI/Swagger
+    Structure de navigation entre les différents modules de l'application,
+    différentes pour chaque rôles
+
+- Pages d'accueil minimalistes (Login, Unit selection, Year selection & Home)
+    Pages : Login, Unit selection, Year selection & Home
+
+- Schéma de DB et API REST
+  
+    Implémentation du schéma de DB
+    Mise en place d'une API sécurisée avec authentification *CC 3.8.2*
+    Documentation technique format OpenAPI/Swagger
     
 - Gestion des rôles & Mapping Accred 🟠
     
-    & Sécurité d'accès (groupes, permissions)
-    
+    Sécurité d'accès (groupes, permissions)
     *CC 3.8.3* 
-    
-    Use first Keycloack for testing
-    
     Définition et attribution des différents niveaux d'accès utilisateurs
-    
     Intégration avec le système de gestion des accès EPFL
-    
     Protection des données sensibles selon les droits utilisateurs (groupes, permissions)
     
-- Pages d'accueil minimalistes : Login, Unit selection, Year selection & Home
-- Navigation inter-modules (Placeholders de toute l’architecture) — 1 wk
-    
-    Système de navigation entre les différents modules de l'application
-    
-    différentes pour chaque rôles
-    
-- Implémentation schéma de DB.
-- gestion des utilisateurs
+- Gestions utilisateuri.ces
 
-[Specs] Déplacement pro
+- [Specs] Déplacements pro
 
-[Specs] Résultat
+- [Specs] Résultats
 
 ### ⚡S2  19.11 - 02.12
 
