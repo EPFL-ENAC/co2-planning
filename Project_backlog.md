@@ -98,6 +98,7 @@
     gestion des accès/visualisations par utilisateurs
     
 - [Specs] (Specs) Infrastructure
+- [Specs] (Specs) Documentation
 
 ### ⚡S4 31.12 - 19.01
 
@@ -141,9 +142,11 @@
     
 - Documentation utilisateur.ices
     
-    CMS pour documentation, système de gestion de contenu pour textes explicatifs sans passer par le prestataire
+    mkDocs setup
+    Formation mkDocs+Github "as a CMS" pour documentation.
     
-    interface documentation
+    Interface documentation : Testing of additional UI layers for doc editiing (Decap) depending on admins' needs. 
+    
     
     3 pages; explication durabilité, info et liens ress externe, info et liens ress intern
 
