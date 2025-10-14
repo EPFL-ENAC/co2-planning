@@ -269,14 +269,6 @@
     export des résultats CSV/PDF
     
 - Services Internes 
-
-- Résultats (2/2)
-    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
-    Calculs
-    Comparaison temporelle
-    export des résultats CSV/PDF
-    
-- Services Internes 
     
     *Annexe 6 3.3.8* 
     
@@ -307,24 +299,18 @@
     type de services et facteurs mis à jour dans Métier
     
 - Emissions directes 
-- Emissions directes 
     
     Import data en csv
     
     Saisie des émissions directes du laboratoire
     
 - Alimentation et pendularité 
-- Alimentation et pendularité 
     
     calcul  avec data fourni par Métier et module labo
     
 - Energie grise 
-- Energie grise 
     
     calcul avec data fourni par Métier
-
-- [Specs] Simulation de projet
-- [Specs] Déchets
 
 - [Specs] (Specs) Simulation de projet
 - [Specs] (Specs) Déchets
