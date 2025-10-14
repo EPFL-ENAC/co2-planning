@@ -207,7 +207,7 @@
                         const tSpec = title.match(/^\s*\[?\s*Specs\s*\]?\s*[:\-–]?\s*(.*)$/i);
                         if (tSpec) {
                             isSpecTask = true;
-                            title = ( '(Specs) ' + (tSpec[1] || '').trim() || 'Specs');
+                            title = ( (tSpec[1] || '').trim() || 'Specs');
                         }
                         // collect indented description lines following the task
                         let descLines = [];
@@ -238,7 +238,7 @@
                 let specMatch;
                 while((specMatch = specsRegex.exec(section)) !== null){
                     const body = specMatch[1] && specMatch[1].trim() ? specMatch[1].trim() : 'Specs';
-                    const displayText = body; // no "[Specs]" prefix in visible label
+                    const displayText = '(Specs) ' + body; // show the Specs marker in the visible label
                     // avoid duplicating if a task with same text already exists
                     const exists = data.some(d => d.parent === sprintId && d.text === displayText);
                     if(!exists){
