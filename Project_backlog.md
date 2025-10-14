@@ -312,8 +312,8 @@
     
     calcul avec data fourni par Métier
 
-[Specs] (Specs) Simulation de projet
-[Specs] (Specs) Déchets
+[Specs] Simulation de projet
+[Specs] Déchets
 
 ### ⚡S8 23.03 - 13.04
 
