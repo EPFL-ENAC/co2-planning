@@ -28,9 +28,9 @@
     
 - Gestions utilisateuri.ces
 
-- [Specs]  Déplacements pro 
+[Specs] Déplacement pro
 
-- [Specs]  Résultats 
+[Specs] Résultat
 
 ### ⚡S2  19.11 - 02.12
 
@@ -66,10 +66,11 @@
     
     Améliorations des pages d'accueil minimalistes
     Ergonomie améliorée (accessibilité)
+    
 
-- [Specs] Mon labo 
+[Specs] Mon labo
 
-- [Specs] Achats 
+[Specs] Achat
 
 ### ⚡S3 03.12 - 18.12 
 
@@ -97,8 +98,10 @@
     
     gestion des accès/visualisations par utilisateurs
     
-- [Specs]  Infrastructure
-- [Specs]  Documentation
+
+[Specs] Infrastructure
+
+
 
 ### ⚡S4 31.12 - 19.01
 
@@ -152,7 +155,7 @@
 
 - Refactor intermédiaire   
 
-- [Specs] Services internes
+[Specs] Services interne
 
 ### ⚡S5 20.01 - 10.02
 
@@ -225,9 +228,9 @@
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
     
 
-- [Specs] Conso. électrique équipements
+[Specs] Consommation électrique
 
-- [Specs] Impact des services cloud
+[Specs] Impact des services cloud
 
 ### ⚡S6 11.02 - 02.03
 
@@ -266,6 +269,14 @@
     export des résultats CSV/PDF
     
 - Services Internes 
+
+- Résultats (2/2)
+    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
+    Calculs
+    Comparaison temporelle
+    export des résultats CSV/PDF
+    
+- Services Internes 
     
     *Annexe 6 3.3.8* 
     
@@ -296,21 +307,27 @@
     type de services et facteurs mis à jour dans Métier
     
 - Emissions directes 
+- Emissions directes 
     
     Import data en csv
     
     Saisie des émissions directes du laboratoire
     
 - Alimentation et pendularité 
+- Alimentation et pendularité 
     
     calcul  avec data fourni par Métier et module labo
     
+- Energie grise 
 - Energie grise 
     
     calcul avec data fourni par Métier
 
 - [Specs] Simulation de projet
 - [Specs] Déchets
+
+- [Specs] (Specs) Simulation de projet
+- [Specs] (Specs) Déchets
 
 ### ⚡S8 23.03 - 13.04
 
