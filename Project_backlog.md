@@ -280,11 +280,11 @@
     
 - Déploiement version Alpha α
 
-- [Specs] Emissions directes
+[Specs] Emissions directes
 
-- [Specs] Alimentation et pendularité
+[Specs] Alimentation et pendularité
 
-- [Specs] Energie grise
+[Specs] Energie grise
 
 
 
@@ -312,8 +312,8 @@
     
     calcul avec data fourni par Métier
 
-- [Specs] (Specs) Simulation de projet
-- [Specs] (Specs) Déchets
+[Specs] (Specs) Simulation de projet
+[Specs] (Specs) Déchets
 
 ### ⚡S8 23.03 - 13.04
 
