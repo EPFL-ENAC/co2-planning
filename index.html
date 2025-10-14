@@ -207,7 +207,7 @@
                         const tSpec = title.match(/^\s*\[?\s*Specs\s*\]?\s*[:\-–]?\s*(.*)$/i);
                         if (tSpec) {
                             isSpecTask = true;
-                            title = ( '(Specs) ' + (tSpec[1] || '').trim() || 'Specs');
+                            title = ( (tSpec[1] || '').trim() || 'Specs');
                         }
                         // collect indented description lines following the task
                         let descLines = [];
