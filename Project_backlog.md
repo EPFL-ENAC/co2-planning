@@ -9,9 +9,9 @@
   
 - Internationalisation
 
-- Pages d'accueil minimalistes : Login, selections & Home
-  
-    Pages
+    Disponible en plusieurs langues (EN/FR)
+
+- Pages d'accueil minimalistes : Login, selections & Home Pages
     Dashboard acceuil
 
 - Schéma de DB et API REST
