@@ -11,7 +11,7 @@
 
     Disponible en plusieurs langues (EN/FR)
 
-- Pages d'accueil minimalistes : Login, selections & Home Pages
+- Pages d'accueil : Login, selections & Home Pages
     Dashboard acceuil
 
 - Schéma de DB et API REST
