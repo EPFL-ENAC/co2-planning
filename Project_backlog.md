@@ -9,12 +9,14 @@
   
 - Internationalisation
 
-- Pages d'accueil minimalistes : Login, selections & Home
-    Pages : Login, Unit selection, Year selection & Home
+    Disponible en plusieurs langues (EN/FR)
+
+- Pages d'accueil minimalistes : Login, selections & Home Pages
+    Dashboard acceuil
 
 - Schéma de DB et API REST
   
-    Implémentation du schéma de DB
+    Implémentation du schéma de DB (database)
     Mise en place d'une API sécurisée avec authentification *CC 3.8.2*
     Documentation technique format OpenAPI/Swagger
     
@@ -28,6 +30,11 @@
     
 - Gestions utilisateuri.ces
 
+  Utilisateurice principal/standard
+  différents rôles
+  accès différents
+  
+
 [Specs] Déplacement pro
 
 [Specs] Résultat
@@ -40,7 +47,7 @@
     Gestion des 5 rôles 
     User flow Gestionnaire IT
     User flow Gestionnaire Métier complet/restreint
-    Utilisateurice principal/standard
+    
     
 - Déplacements pro
     

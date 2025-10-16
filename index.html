@@ -79,7 +79,7 @@
     <div id="gantt_here"></div>
     <script type="text/javascript">
         gantt.config.xml_date = "%Y-%m-%d %H:%i";
-
+        gantt.config.types["customType"] = "type_id";
         // Color only tasks that have a parent or are marked as specs
         gantt.templates.task_class = function(start, end, task){
             var classes = [];
@@ -106,7 +106,13 @@
 
         // Set main scale to week and top scale to month
         gantt.config.scale_unit = "week";
-        gantt.config.date_scale = "%m-%d";
+        // show week range as "DD-DD" (start day - end day) without month
+        gantt.templates.date_scale = function(date){
+            var startDay = date.getDate();
+            var end = new Date(date);
+            end.setDate(end.getDate() + 6);
+            return pad(startDay) + '.' + pad(date.getMonth()+1) + ' to ' + pad(end.getDate()) + '.' + pad(end.getMonth()+1);
+        };
         gantt.config.subscales = [
             {unit: "month", step: 1, date: "%F %Y"}
         ];
