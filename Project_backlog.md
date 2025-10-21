@@ -39,6 +39,8 @@
 
 [Specs] Résultat
 
+[Specs] Interface IT/Métier
+
 ### ⚡S2  19.11 - 02.12
 
 - Interfaces admins (IT/métier)
