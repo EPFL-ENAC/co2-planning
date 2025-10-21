@@ -37,8 +37,6 @@
 
 [Specs] Déplacement pro
 
-[Specs] Résultat
-
 [Specs] Interface IT/Métier
 
 ### ⚡S2  19.11 - 02.12
@@ -76,6 +74,8 @@
     Améliorations des pages d'accueil minimalistes
     Ergonomie améliorée (accessibilité)
     
+
+[Specs] Résultat
 
 [Specs] Mon labo
 
