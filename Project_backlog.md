@@ -79,8 +79,6 @@
 
 [Specs] Mon labo
 
-[Specs] Achat
-
 ### ⚡S3 03.12 - 18.12 
 
 - Résultats (MVP 1/2)
@@ -108,8 +106,9 @@
     gestion des accès/visualisations par utilisateurs
     
 
-[Specs] Infrastructure
+[Specs] Documentation
 
+[Specs] Achat
 
 
 ### ⚡S4 31.12 - 19.01
@@ -163,6 +162,8 @@
     3 pages; explication durabilité, info et liens ress externe, info et liens ress intern
 
 - Refactor intermédiaire   
+
+[Specs] Infrastructure
 
 [Specs] Services interne
 
