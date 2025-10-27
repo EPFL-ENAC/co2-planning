@@ -157,7 +157,7 @@
     3 pages; explication durabilité, info et liens ress externe, info et liens ress intern
 
 - Refactor intermédiaire
-- 
+  
 [Specs] Achat (+ cloud externe)
 
 [Specs] Infrastructure
@@ -234,7 +234,6 @@
     
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
 
-    
 [Specs] Emissions directes
 
 [Specs] Alimentation et pendularité + Déchets
