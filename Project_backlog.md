@@ -162,7 +162,7 @@
 
 [Specs] Infrastructure
 
-[Specs] Services interne
+[Specs] Services internes
 
 ### ⚡S5 20.01 - 10.02
 
