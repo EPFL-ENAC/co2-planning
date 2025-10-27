@@ -33,7 +33,10 @@
   Utilisateurice principal/standard
   différents rôles
   accès différents
-  
+
+- No Mobile version
+
+  Proposition de message d'error
 
 [Specs] Déplacement pro
 
