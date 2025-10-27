@@ -233,7 +233,13 @@
     Intégration des facteurs d'émission liés à la consommation électrique
     
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
+
     
+[Specs] Emissions directes
+
+[Specs] Alimentation et pendularité + Déchets
+
+[Specs] Energie grise
 
 
 ### ⚡S6 11.02 - 02.03
@@ -302,11 +308,6 @@
     
 - Déploiement version Alpha α
 
-[Specs] Emissions directes
-
-[Specs] Alimentation et pendularité + Déchets
-
-[Specs] Energie grise
 
 
 
