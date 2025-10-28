@@ -46,7 +46,7 @@
 [Specs] Mon labo
 
 
-### ⚡S2  19.11 - 02.12
+### ⚡S2  19.11 - 03.12
 
 - Interfaces admins (IT/métier)
       
@@ -93,7 +93,7 @@
 [Specs] Résultat
 
 
-### ⚡S3 03.12 - 18.12 
+### ⚡S3 04.12 - 18.12 
 
 - Résultats (MVP 1/2)
     Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
