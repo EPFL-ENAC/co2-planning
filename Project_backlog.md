@@ -307,7 +307,7 @@
     
 - Déploiement version Alpha α
 
-
+[Specs] Simulation de projet
 
 
 ### ⚡S7 03.03 - 23.03
@@ -323,8 +323,6 @@
 - Energie grise 
     
     calcul avec data fourni par Métier
-
-[Specs] Simulation de projet
 
 ### ⚡S8 23.03 - 13.04
 
