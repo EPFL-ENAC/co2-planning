@@ -89,9 +89,6 @@
     Améliorations des pages d'accueil minimalistes
     Ergonomie améliorée (accessibilité)
   
-- Exploration déploiement Openshift
-    Tests et prise en main
-    
 
 [Specs] Résultat
 
