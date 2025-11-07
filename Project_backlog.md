@@ -48,7 +48,7 @@
 
 ### ⚡S2  19.11 - 03.12
 
-- Interfaces admins (IT/métier)
+- Interfaces admins (MVP 1/2) (IT/métier)
       
     Selon *CC 3.7.8*
     Gestion des 5 rôles 
@@ -233,6 +233,13 @@
     Intégration des facteurs d'émission liés à la consommation électrique
     
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
+
+  - Interfaces admins (MVP 2/2) (IT/métier)
+      
+    Selon *CC 3.7.8*
+    Gestion des 5 rôles 
+    User flow Gestionnaire IT
+    User flow Gestionnaire Métier complet/restreint
 
 [Specs] Emissions directes
 
