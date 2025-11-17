@@ -52,7 +52,7 @@
   [Status: done]
 
 - [Specs] Mon labo
-  [Status: done]
+  [Status: progress]
 
 ### ⚡S2  19.11 - 03.12
 
