@@ -6,45 +6,53 @@
     Structure de navigation entre les différents modules de l'application,
     différentes pour chaque rôles
     Navigation inter-modules
-  
+    [Status: done]
+    
 - Internationalisation
 
     Disponible en plusieurs langues (EN/FR)
+    [Status: done]
 
 - Pages d'accueil : Login, selections & Home Pages
     Dashboard acceuil
+    [Status: done]
 
 - Schéma de DB et API REST
   
     Implémentation du schéma de DB (database)
     Mise en place d'une API sécurisée avec authentification *CC 3.8.2*
     Documentation technique format OpenAPI/Swagger
-    
-- Gestion des rôles & Mapping Accred 🟠
+    [Status: progress]
+
+- Gestion des rôles & Mapping Accred 
     
     Sécurité d'accès (groupes, permissions)
     *CC 3.8.3* 
     Définition et attribution des différents niveaux d'accès utilisateurs
     Intégration avec le système de gestion des accès EPFL
     Protection des données sensibles selon les droits utilisateurs (groupes, permissions)
-    
+    [Status: progress]
+
 - Gestions utilisateuri.ces
 
   Utilisateurice principal/standard
   différents rôles
   accès différents
+  [Status: progress]
 
 - No Mobile version
 
   Proposition de message d'error
+  [Status: done]
 
+- [Specs] Interface IT/Métier
+  [Status: progress]
 
-[Specs] Interface IT/Métier
+- [Specs] Consommation électrique
+  [Status: done]
 
-[Specs] Consommation électrique
-
-[Specs] Mon labo
-
+- [Specs] Mon labo
+  [Status: done]
 
 ### ⚡S2  19.11 - 03.12
 
