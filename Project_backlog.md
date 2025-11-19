@@ -242,7 +242,7 @@
     
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
 
-  - Interfaces admins (MVP 2/2) (IT/métier)
+ - Interfaces admins (MVP 2/2) (IT/métier)
       
     Selon *CC 3.7.8*
     Gestion des 5 rôles 
