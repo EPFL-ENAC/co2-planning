@@ -212,7 +212,7 @@
     
     outil IA EPFL (optionnel)
     
-- Infrastucture
+- Infrastructure
     
     *Annexe 6 3.3.5.1* 
     
