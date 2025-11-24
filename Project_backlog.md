@@ -339,13 +339,15 @@
     
     calcul avec data fourni par Métier
 
+[Specs] Définition des tests d'intégration
+
 ### ⚡S8 23.03 - 13.04
 
 - Alimentation et pendularité + Déchets
     
     calcul  avec data fourni par Métier et module labo
 
-- Gestion des bugs, intégration des retours
+- Gestion des bugs, retours, tests d'intégrations
     
     Intégrations des retours
     
