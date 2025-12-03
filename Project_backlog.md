@@ -46,13 +46,13 @@
   [Status: done]
 
 - [Specs] Interface IT/Métier
-  [Status: progress]
+  [Status: done]
 
 - [Specs] Consommation électrique
   [Status: done]
 
 - [Specs] Mon labo
-  [Status: progress]
+  [Status: done]
 
 ### ⚡S2  19.11 - 03.12
 
@@ -62,7 +62,7 @@
     Gestion des 5 rôles 
     User flow Gestionnaire IT
     User flow Gestionnaire Métier complet/restreint
-    
+    [Status: done]
     
     
 - Consommation électrique équipements 
@@ -92,13 +92,16 @@
     (optionel) modif cat. et sous cat depuis interface gestion métier
     
     Calcul CO2-eq par équipement
+    [Status: progress]
+  
 - Améliorations UX
     
     Améliorations des pages d'accueil minimalistes
     Ergonomie améliorée (accessibilité)
-  
+    [Status: done]
 
 [Specs] Résultat
+[Status: progress]
 
 
 ### ⚡S3 04.12 - 18.12 
