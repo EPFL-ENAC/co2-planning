@@ -100,8 +100,8 @@
     Ergonomie améliorée (accessibilité)
     [Status: done]
 
-[Specs] Résultat
-[Status: progress]
+- [Specs] Résultat
+  [Status: progress]
 
 
 ### ⚡S3 04.12 - 18.12 
