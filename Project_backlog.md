@@ -92,7 +92,7 @@
     (optionel) modif cat. et sous cat depuis interface gestion métier
     
     Calcul CO2-eq par équipement
-    [Status: progress]
+    [Status: done]
   
 - Améliorations UX
     
@@ -101,7 +101,7 @@
     [Status: done]
 
 - [Specs] Résultat
-  [Status: progress]
+  [Status: done]
 
 
 ### ⚡S3 04.12 - 18.12 
