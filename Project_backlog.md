@@ -111,6 +111,7 @@
     Calculs
     Comparaison temporelle
     export des résultats CSV/PDF
+    [Status: progress]
     
 - Mon labo 
     
@@ -129,11 +130,14 @@
     implémentation des datas dans la DB
     
     gestion des accès/visualisations par utilisateurs
+    [Status: progress]
     
 
-[Specs] Documentation
+- [Specs] Documentation
+  [Status: done]
 
-[Specs] Déplacement pro
+- [Specs] Déplacement pro
+  [Status: progress]
 
 ### ⚡S4 31.12 - 19.01
 
