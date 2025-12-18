@@ -173,7 +173,8 @@
 
 - Refactor intermédiaire
   
-[Specs] Achat (+ cloud externe)
+- [Specs] Achat (+ cloud externe)
+  [Status: progress]
 
 [Specs] Infrastructure
 
