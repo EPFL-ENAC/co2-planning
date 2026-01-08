@@ -257,8 +257,6 @@
     User flow Gestionnaire IT
     User flow Gestionnaire Métier complet/restreint
 
-[Specs] Emissions directes
-
 [Specs] Alimentation et pendularité + Déchets
 
 [Specs] Energie grise
@@ -335,13 +333,6 @@
 
 ### ⚡S7 03.03 - 23.03
 - Refactor intermédiaire
-    
-- Emissions directes 
-    
-    Import data en csv
-    
-    Saisie des émissions directes du laboratoire
-    
     
 - Energie grise 
     
