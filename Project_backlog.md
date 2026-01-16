@@ -6,23 +6,20 @@
     Structure de navigation entre les différents modules de l'application,
     différentes pour chaque rôles
     Navigation inter-modules
-    [Status: done]
     
 - Internationalisation
 
     Disponible en plusieurs langues (EN/FR)
-    [Status: done]
 
 - Pages d'accueil : Login, selections & Home Pages
     Dashboard acceuil
-    [Status: done]
-
+  
 - Schéma de DB et API REST
   
     Implémentation du schéma de DB (database)
     Mise en place d'une API sécurisée avec authentification *CC 3.8.2*
     Documentation technique format OpenAPI/Swagger
-    [Status: progress]
+    
 
 - Gestion des rôles & Mapping Accred 
     
@@ -31,28 +28,28 @@
     Définition et attribution des différents niveaux d'accès utilisateurs
     Intégration avec le système de gestion des accès EPFL
     Protection des données sensibles selon les droits utilisateurs (groupes, permissions)
-    [Status: progress]
+    
 
 - Gestions utilisateuri.ces
 
   Utilisateurice principal/standard
   différents rôles
   accès différents
-  [Status: progress]
+  
 
 - No Mobile version
 
   Proposition de message d'error
-  [Status: done]
+  
 
 - [Specs] Interface IT/Métier
-  [Status: done]
+  
 
 - [Specs] Consommation électrique
-  [Status: done]
+  
 
 - [Specs] Mon labo
-  [Status: done]
+  
 
 ### ⚡S2  19.11 - 03.12
 
@@ -62,7 +59,7 @@
     Gestion des 5 rôles 
     User flow Gestionnaire IT
     User flow Gestionnaire Métier complet/restreint
-    [Status: done]
+    
     
     
 - Consommation électrique équipements 
@@ -92,16 +89,16 @@
     (optionel) modif cat. et sous cat depuis interface gestion métier
     
     Calcul CO2-eq par équipement
-    [Status: done]
+    
   
 - Améliorations UX
     
     Améliorations des pages d'accueil minimalistes
     Ergonomie améliorée (accessibilité)
-    [Status: done]
+    
 
 - [Specs] Résultat
-  [Status: done]
+  
 
 
 ### ⚡S3 04.12 - 18.12 
@@ -111,7 +108,7 @@
     Calculs
     Comparaison temporelle
     export des résultats CSV/PDF
-    [Status: progress]
+    
     
 - Mon labo 
     
@@ -130,14 +127,14 @@
     implémentation des datas dans la DB
     
     gestion des accès/visualisations par utilisateurs
-    [Status: progress]
+    
     
 
 - [Specs] Documentation
-  [Status: done]
+  
 
 - [Specs] Déplacement pro
-  [Status: progress]
+  
 
 ### ⚡S4 31.12 - 19.01
 
@@ -174,7 +171,7 @@
 - Refactor intermédiaire
   
 - [Specs] Achat (+ cloud externe)
-  [Status: progress]
+  
 
 [Specs] Infrastructure
 
@@ -213,8 +210,6 @@
     Affichage de message si dépasse un certains seuils
     
     intégrer des explication sur les calculs
-    
-    Transport des achats (optionnel) 🟡
     
     Empreinte carbone alternative (optionnel)
     
