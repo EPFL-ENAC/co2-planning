@@ -170,14 +170,82 @@
 
 - Refactor intermédiaire
   
-- [Specs] Achat (+ cloud externe)
+- [Specs] Cloud externe
   
+
+
+### ⚡S5 20.01 - 10.02
+
+- Impact Cloud externes
+    
+    *Annexe 6 3.3.9* 
+    
+    Intégration des facteurs d'émission liés aux services
+    
+    type de services et facteurs mis à jour dans Métier
+
+  
+- Déploiement OpenShift
+    
+    Déploiement OpenShift avec DSI
+  
+    
+- Infrastructure (1/2)
+    
+    *Annexe 6 3.3.5.1* 
+    
+    Import data en csv
+    
+    calcul du CO2-eq
+    
+    Messages d’erreurs et validations
+    
+    Sauvegarde et historiques
+    
+    visualisation des data rentrées, avec filtres et graphiques
+    
+    implémentation des datas dans la DB
+    
+    gestion des accès/visualisations par utilisateurs
+    
+    Affichage de message si dépasse un certains seuils
+    
+    intégrer des explication sur les calculs
+    
+    Saisie bâtiments, ventilation, chauffage, éclairage
+    
+    occupation des locaux et surface de pièces correspondant au nom du labo auto avec un fichier csv métier
+    
+    Intégration des facteurs d'émission liés à la consommation électrique
+    
+    calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
+
+ - Interfaces admins (2/3) (IT/métier)
+      
+    Selon *CC 3.7.8*
+    Gestion des 5 rôles 
+    User flow Gestionnaire IT
+    User flow Gestionnaire Métier complet/restreint
+
+ - Résultats (2/3)
+    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
+    Calculs
+    Comparaison temporelle
+    export des résultats CSV/PDF
+
+ - Déplacement Pro ajustement 
+
+[Specs] Alimentation et pendularité + Déchets
+
+[Specs] Energie grise
+
+[Specs] Achats
 
 [Specs] Infrastructure
 
 [Specs] Services internes
 
-### ⚡S5 20.01 - 10.02
+### ⚡S6 11.02 - 02.03
 
 - Achats (MVP 1/2)
     
@@ -214,8 +282,10 @@
     Empreinte carbone alternative (optionnel)
     
     outil IA EPFL (optionnel)
-    
-- Infrastructure
+
+
+
+  - Infrastructure (2/2)
     
     *Annexe 6 3.3.5.1* 
     
@@ -245,20 +315,30 @@
     
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
 
- - Interfaces admins (2/2) (IT/métier)
-      
-    Selon *CC 3.7.8*
-    Gestion des 5 rôles 
-    User flow Gestionnaire IT
-    User flow Gestionnaire Métier complet/restreint
+- Résultats (3/3)
+    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
+    Calculs
+    Comparaison temporelle
+    export des résultats CSV/PDF
+    
+- Services Internes 
+    
+    *Annexe 6 3.3.8* 
+    
+    Import data en csv
+    
+    Saisie services internes (plateformes, types)
+    
+    liste de centres et plateformes modif depuis Métier
+    
+- Déploiement version Alpha α
 
-[Specs] Alimentation et pendularité + Déchets
-
-[Specs] Energie grise
+[Specs] Simulation de projet
 
 
-### ⚡S6 11.02 - 02.03
-
+### ⚡S7 03.03 - 23.03
+- Refactor intermédiaire
+    
 - Achats (2/2)
     
     *Annexe 6 3.3.7.1*
@@ -291,43 +371,9 @@
     
     intégrer des explication sur les calculs
     
-    sous module Transport des achats (optionnel)
-    
     Empreinte carbone alternative (optionnel)
     
     outil IA EPFL (optionnel)
-
-- Impact Cloud externes
-    
-    *Annexe 6 3.3.9* 
-    
-    Intégration des facteurs d'émission liés aux services
-    
-    type de services et facteurs mis à jour dans Métier
-
-- Résultats (2/2)
-    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
-    Calculs
-    Comparaison temporelle
-    export des résultats CSV/PDF
-    
-- Services Internes 
-    
-    *Annexe 6 3.3.8* 
-    
-    Import data en csv
-    
-    Saisie services internes (plateformes, types)
-    
-    liste de centres et plateformes modif depuis Métier
-    
-- Déploiement version Alpha α
-
-[Specs] Simulation de projet
-
-
-### ⚡S7 03.03 - 23.03
-- Refactor intermédiaire
     
 - Energie grise 
     
