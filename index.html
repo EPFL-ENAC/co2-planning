@@ -15,11 +15,9 @@
     #gantt_here {
       width: 100vw;
       height: 100vh;
-      min-height: 100%;
       box-sizing: border-box;
       font-size: 18px;
     }
-    h1 { display: none; }
     .gantt-btn {
       position: absolute;
       z-index: 10;
@@ -61,7 +59,6 @@
     .gantt_task_content, .gantt_task_text {
       font-size: 16px;
       line-height: 30px;
-      padding-right: 8px; /* space for emoji */
     }
     .gantt_marker_line.today {
       background-color: #e53935 !important;
@@ -78,61 +75,42 @@
       font-weight: bold;
       color: #333;
     }
-    .task-emoji {
-      font-size: 24px;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
   </style>
 </head>
 <body>
-  <h1>dhtmlxGantt-Co2-calc</h1>
   <div id="gantt_here"></div>
   <script type="text/javascript">
-    // Gantt plugins and config
+    // Gantt config
     gantt.plugins({ marker: true });
     gantt.config.xml_date = "%Y-%m-%d %H:%i";
-    gantt.config.types["customType"] = "type_id";
 
     // Task class template
     gantt.templates.task_class = function(start, end, task) {
-      var classes = [];
+      const classes = [];
       if (task.isSpec) classes.push("specs-task");
       if (task.parent && task.parent != 0) classes.push("child-task");
       return classes.join(" ");
     };
 
-    // Task text template with status emoji on the right
+    // Task text template
     gantt.templates.task_text = function(start, end, task) {
-      var emoji = '';
-      if (task.status === 'done') emoji = '<span class="task-emoji">✅</span>';
-      else if (task.status === 'progress') emoji = '<span class="task-emoji">🚧</span>';
-      return task.text + emoji;
+      return task.text;
     };
 
     // Lightbox sections
     gantt.config.lightbox.sections = [
       { name: "name", height: 30, map_to: "text", type: "textarea", focus: true },
       { name: "description", height: 70, map_to: "description", type: "textarea", focus: true },
-      { name: "status", height: 30, map_to: "status", type: "select", options: [
-        { key: "done", label: "✅ Done" },
-        { key: "progress", label: "🚧 In Progress" },
-        { key: "", label: "No Status" }
-      ] },
-      { name: "complexity", height: 30, map_to: "complexity", type: "select", options: [
-        { key: 1, label: "1 (Low)" }, { key: 2, label: "2" }, { key: 3, label: "3" },
-        { key: 4, label: "4" }, { key: 5, label: "5 (High)" }, { key: "", label: "" }
-      ] },
+      // Removed status section
       { name: "time", type: "duration", map_to: "auto" }
     ];
 
     // Scale config
     gantt.config.scale_unit = "week";
     gantt.templates.date_scale = function(date) {
-      var startDay = date.getDate();
-      var end = new Date(date);
+      const end = new Date(date);
       end.setDate(end.getDate() + 6);
-      return pad(startDay) + '.' + pad(date.getMonth() + 1) + ' to ' + pad(end.getDate()) + '.' + pad(end.getMonth() + 1);
+      return pad(date.getDate()) + '.' + pad(date.getMonth() + 1) + ' to ' + pad(end.getDate()) + '.' + pad(end.getMonth() + 1);
     };
     gantt.config.subscales = [{ unit: "month", step: 1, date: "%F %Y" }];
     gantt.config.scale_height = 80;
@@ -142,7 +120,6 @@
     gantt.config.columns = [
       { name: "text", label: "name", width: "*", tree: true },
       { name: "duration_weeks", label: "Durée (semaines)", align: "center", width: 120, template: obj => Math.round((obj.duration || 0) / 7) },
-      { name: "complexity", label: "Complexité", align: "center", width: 100, template: obj => obj.complexity || "" },
       { name: "add", label: "", width: 44 }
     ];
 
@@ -151,7 +128,6 @@
     gantt.config.order_branch_free = true;
     gantt.config.row_height = 60;
     gantt.config.bar_height = 30;
-    document.getElementById('gantt_here').style.fontSize = '16px';
 
     // Helper functions
     function pad(n) { return n < 10 ? '0' + n : String(n); }
@@ -165,37 +141,60 @@
       return Math.round((end - start) / ms) + 1;
     }
 
-    // Parse markdown to gantt data
-    function parseMarkdownToGanttData(markdown, baseYear) {
-      // Normalize chars
-      markdown = String(markdown).replace(/\u00A0/g, ' ').replace(/[–—]/g, '-').replace(/\r\n/g, '\n');
+    const RE = {
+      header: /⚡?\s*(S?\d+)?\s*([0-3]?\d\.\d{1,2})\s*-\s*([0-3]?\d\.\d{1,2})/i,
+      bullet: /^\s*-\s+(.+)$/,
+      specInline: /^\s*\[?\s*Specs\s*\]?\s*[:\-–]?\s*(.*)$/i,
+      specLine: /^\s*(?:\[(?:Specs)\]|\bSpecs\b)\s*[:\-–]?\s*(.+)?$/i,
+      plus: /^\[?\s*\+(\d+)\s*\]?$/
+    };
 
-      const sections = markdown.split(/^###\s*/m).slice(1);
-      const data = [], links = [];
-      let year = baseYear || new Date().getFullYear(), prevStartMonth = null, linkId = 1;
-
+    function buildSprintRanges(sections, baseYear) {
+      let year = baseYear || new Date().getFullYear();
+      let prevStartMonth = null;
+      const ranges = [];
       sections.forEach((section, idx) => {
         const headerLine = (section.split('\n')[0] || '').trim();
-        const headerMatch = headerLine.match(/⚡?\s*(S?\d+)?\s*([0-3]?\d\.\d{1,2})\s*-\s*([0-3]?\d\.\d{1,2})/i);
-        if (!headerMatch) {
-          console.log('skipping section:', headerLine);
-          return;
-        }
-
+        const headerMatch = headerLine.match(RE.header);
+        if (!headerMatch) { ranges.push(null); return; }
         const [_, sprintLabel, startDDMM, endDDMM] = headerMatch;
         const startMonth = parseInt(startDDMM.split('.')[1], 10);
         if (prevStartMonth !== null && startMonth < prevStartMonth) year++;
         prevStartMonth = startMonth;
-
         const startDateObj = toDateFromDDMM(startDDMM, year);
         let endYear = year;
         const endMonth = parseInt(endDDMM.split('.')[1], 10);
         if (endMonth < startMonth) endYear++;
         const endDateObj = toDateFromDDMM(endDDMM, endYear);
         const duration = daysInclusive(startDateObj, endDateObj);
+        const labelNumber = String(sprintLabel || idx + 1).replace(/^S/i, '').trim() || String(idx + 1);
+        ranges.push({ startDateObj, endDateObj, duration, labelNumber });
+      });
+      return ranges;
+    }
+
+    // Parse markdown to gantt data
+    function parseMarkdownToGanttData(markdown, baseYear) {
+      markdown = String(markdown).replace(/\u00A0/g, ' ').replace(/[–—]/g, '-').replace(/\r\n/g, '\n');
+
+      const sections = markdown.split(/^###\s*/m).slice(1);
+      const data = [], links = [];
+      let linkId = 1;
+      const sprintRanges = buildSprintRanges(sections, baseYear);
+
+      const computeDuration = (startDateObj, baseDuration, extra, idx) => {
+        if (extra > 0 && sprintRanges[idx + extra]) {
+          return daysInclusive(startDateObj, sprintRanges[idx + extra].endDateObj);
+        }
+        return extra > 0 ? baseDuration * (1 + extra) : baseDuration;
+      };
+
+      sections.forEach((section, idx) => {
+        const range = sprintRanges[idx];
+        if (!range) return;
 
         const sprintId = idx + 1;
-        const labelNumber = String(sprintLabel || idx + 1).replace(/^S/i, '').trim() || String(idx + 1);
+        const { startDateObj, duration, labelNumber } = range;
         data.push({
           id: sprintId,
           text: `Sprint ${labelNumber}`,
@@ -204,62 +203,70 @@
           progress: 0
         });
 
-        // Extract tasks
         const lines = section.split('\n');
         let taskIndex = 0;
         for (let i = 1; i < lines.length; i++) {
           const line = lines[i];
-          const topMatch = line.match(/^\s*-\s+(.+)$/);
-          if (topMatch && line.search(/^\s*-/) === 0) {
-            taskIndex++;
-            let title = topMatch[1].trim();
-            let isSpecTask = false;
-            const tSpec = title.match(/^\s*\[?\s*Specs\s*\]?\s*[:\-–]?\s*(.*)$/i);
-            if (tSpec) {
-              isSpecTask = true;
-              const body = (tSpec[1] || '').trim();
-              title = '(Specs) ' + (body || 'Specs');
-            }
+          const topMatch = line.match(RE.bullet);
+          if (!topMatch) continue;
 
-            // Collect descriptions and extract status
-            let descLines = [], status = null, j = i + 1;
-            while (j < lines.length && (lines[j].match(/^\s{2,}.+/) || lines[j].trim() === '')) {
-              const descMatch = lines[j].match(/^\s{2,}(.+)/);
-              if (descMatch) {
-                const descLine = descMatch[1];
-                const statusMatch = descLine.match(/^\[Status:\s*(done|progress)\]$/i);
-                if (statusMatch) {
-                  status = statusMatch[1].toLowerCase();
-                } else {
-                  descLines.push(descLine);
-                }
-              }
-              j++;
-            }
-            i = j - 1;
-
-            const taskId = sprintId * 100 + taskIndex;
-            data.push({
-              id: taskId,
-              text: title,
-              parent: sprintId,
-              start_date: formatGanttDate(startDateObj),
-              duration,
-              description: descLines.join('\n').trim(),
-              isSpec: isSpecTask,
-              status: status
-            });
-            links.push({ id: linkId++, source: sprintId, target: taskId, type: "1" });
-            console.log('created task:', title, 'under sprint', sprintId, 'status:', status);
+          taskIndex++;
+          let title = topMatch[1].trim();
+          let isSpecTask = false;
+          const tSpec = title.match(RE.specInline);
+          if (tSpec) {
+            isSpecTask = true;
+            const body = (tSpec[1] || '').trim();
+            title = '(Specs) ' + (body || 'Specs');
           }
+
+          let descLines = [], j = i + 1;
+          let extraSprintsFromDesc = 0;
+          while (j < lines.length && (lines[j].match(/^\s{2,}.+/) || lines[j].trim() === '')) {
+            const descMatch = lines[j].match(/^\s{2,}(.+)/);
+            if (descMatch) {
+              const descLine = descMatch[1];
+              const plusLineMatch = descLine.match(RE.plus);
+              if (plusLineMatch) extraSprintsFromDesc = parseInt(plusLineMatch[1], 10) || 0;
+              else descLines.push(descLine);
+            }
+            j++;
+          }
+          i = j - 1;
+
+          let extraSprints = 0;
+          const plusMatch = title.match(/\[\s*\+(\d+)\s*\]/);
+          if (plusMatch) {
+            extraSprints = parseInt(plusMatch[1], 10) || 0;
+            title = title.replace(plusMatch[0], '').trim();
+          }
+          if (extraSprintsFromDesc > 0) extraSprints = Math.max(extraSprints, extraSprintsFromDesc);
+
+          const taskId = sprintId * 100 + taskIndex;
+          data.push({
+            id: taskId,
+            text: title,
+            parent: sprintId,
+            start_date: formatGanttDate(startDateObj),
+            duration: computeDuration(startDateObj, duration, extraSprints, idx),
+            description: descLines.join('\n').trim(),
+            isSpec: isSpecTask
+          });
+          links.push({ id: linkId++, source: sprintId, target: taskId, type: "1" });
         }
 
-        // Handle standalone [Specs] (add status parsing if needed, but skip for now)
-        const specsRegex = /^\s*(?:\[(?:Specs)\]|\bSpecs\b)\s*[:\-–]?\s*(.+)?$/gmi;
-        let specMatch;
-        while ((specMatch = specsRegex.exec(section)) !== null) {
-          const body = (specMatch[1] && specMatch[1].trim()) ? specMatch[1].trim() : 'Specs';
-          const displayText = '(Specs) ' + body;
+        for (let si = 1; si < lines.length; si++) {
+          const specLineMatch = lines[si].match(RE.specLine);
+          if (!specLineMatch) continue;
+
+          let body = (specLineMatch[1] && specLineMatch[1].trim()) ? specLineMatch[1].trim() : 'Specs';
+          let extraSprintsSpec = 0;
+          for (let m = si + 1; m < Math.min(lines.length, si + 5); m++) {
+            const plusLineMatch = lines[m].match(RE.plus);
+            if (plusLineMatch) { extraSprintsSpec = parseInt(plusLineMatch[1], 10) || 0; break; }
+          }
+
+          const displayText = '(Specs) ' + (body || 'Specs');
           const exists = data.some(d => d.parent === sprintId && d.text === displayText);
           if (!exists) {
             taskIndex++;
@@ -269,7 +276,7 @@
               text: displayText,
               parent: sprintId,
               start_date: formatGanttDate(startDateObj),
-              duration,
+              duration: computeDuration(startDateObj, duration, extraSprintsSpec, idx),
               isSpec: true
             });
             links.push({ id: linkId++, source: sprintId, target: taskId, type: "1" });
@@ -277,16 +284,14 @@
         }
       });
 
-      console.log('parsed tasks:', data);
       return { data, links };
     }
 
-    // Init and load data
     gantt.init("gantt_here");
 
     function addTodayMarker(date) {
       if (window._todayMarkerId) try { gantt.removeMarker(window._todayMarkerId); } catch (e) {}
-      var dateToStr = gantt.date.date_to_str(gantt.config.task_date);
+      const dateToStr = gantt.date.date_to_str(gantt.config.task_date);
       window._todayMarkerId = gantt.addMarker({
         start_date: date instanceof Date ? date : new Date(date),
         css: "today",
@@ -300,7 +305,6 @@
       .then(response => response.ok ? response.text() : Promise.reject('fetch failed: ' + response.status))
       .then(markdown => {
         const ganttData = parseMarkdownToGanttData(markdown, 2025);
-        console.log('ganttData:', ganttData);
         gantt.clearAll();
         gantt.parse(ganttData);
         addTodayMarker(new Date());

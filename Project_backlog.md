@@ -172,7 +172,14 @@
   
 - [Specs] Cloud externe
   
+- [Specs] Achats
+    [+1]
 
+- [Specs] Infrastructure
+    [+1]
+
+- [Specs] Services internes
+    [+1]
 
 ### ⚡S5 20.01 - 10.02
 
@@ -239,11 +246,6 @@
 
 [Specs] Energie grise
 
-[Specs] Achats
-
-[Specs] Infrastructure
-
-[Specs] Services internes
 
 ### ⚡S6 11.02 - 02.03
 
