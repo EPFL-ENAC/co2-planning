@@ -195,37 +195,6 @@
 - Déploiement OpenShift
     
     Déploiement OpenShift avec DSI
-  
-    
-- Infrastructure (1/2)
-    
-    *Annexe 6 3.3.5.1* 
-    
-    Import data en csv
-    
-    calcul du CO2-eq
-    
-    Messages d’erreurs et validations
-    
-    Sauvegarde et historiques
-    
-    visualisation des data rentrées, avec filtres et graphiques
-    
-    implémentation des datas dans la DB
-    
-    gestion des accès/visualisations par utilisateurs
-    
-    Affichage de message si dépasse un certains seuils
-    
-    intégrer des explication sur les calculs
-    
-    Saisie bâtiments, ventilation, chauffage, éclairage
-    
-    occupation des locaux et surface de pièces correspondant au nom du labo auto avec un fichier csv métier
-    
-    Intégration des facteurs d'émission liés à la consommation électrique
-    
-    calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
 
  - Interfaces admins (2/3) (IT/métier)
       
@@ -286,8 +255,23 @@
     outil IA EPFL (optionnel)
 
 
+- Résultats (3/3)
+    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
+    Calculs
+    Comparaison temporelle
+    export des résultats CSV/PDF
+    
+- Services Internes 
+    
+    *Annexe 6 3.3.8* 
+    
+    Import data en csv
+    
+    Saisie services internes (plateformes, types)
+    
+    liste de centres et plateformes modif depuis Métier
 
-  - Infrastructure (2/2)
+- Infrastructure 
     
     *Annexe 6 3.3.5.1* 
     
@@ -317,21 +301,6 @@
     
     calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
 
-- Résultats (3/3)
-    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
-    Calculs
-    Comparaison temporelle
-    export des résultats CSV/PDF
-    
-- Services Internes 
-    
-    *Annexe 6 3.3.8* 
-    
-    Import data en csv
-    
-    Saisie services internes (plateformes, types)
-    
-    liste de centres et plateformes modif depuis Métier
     
 - Déploiement version Alpha α
 
@@ -340,7 +309,9 @@
 
 ### ⚡S7 03.03 - 23.03
 - Refactor intermédiaire
-    
+
+- Résultats (3/3)
+  
 - Achats (2/2)
     
     *Annexe 6 3.3.7.1*
