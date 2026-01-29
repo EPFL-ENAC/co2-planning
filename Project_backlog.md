@@ -183,7 +183,7 @@
 
 ### ⚡S5 20.01 - 10.02
 
-- Impact Cloud externes
+- Cloud externes & AI
     
     *Annexe 6 3.3.9* 
     
@@ -254,12 +254,6 @@
     
     outil IA EPFL (optionnel)
 
-
-- Résultats (3/3)
-    Visualisation : Graphiques, filtres interactifs pour mieux analyser les données
-    Calculs
-    Comparaison temporelle
-    export des résultats CSV/PDF
     
 - Services Internes 
     
@@ -311,6 +305,8 @@
 - Refactor intermédiaire
 
 - Résultats (3/3)
+
+- Interfaces admins (3/3) (IT/métier)
   
 - Achats (2/2)
     
@@ -356,7 +352,7 @@
 
 ### ⚡S8 23.03 - 13.04
 
-- Alimentation et pendularité + Déchets
+- Alimentation + Pendularité + Déchets
     
     calcul  avec data fourni par Métier et module labo
 
@@ -366,9 +362,6 @@
     
     corriger bugs et imprévus
 
-- Déchets 
-    
-    calcul avec data fourni par Métier et module labo
     
 ### ⚡S9 14.04 - 04.05
 
