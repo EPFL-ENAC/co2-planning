@@ -265,36 +265,9 @@
     
     liste de centres et plateformes modif depuis Métier
 
-- Infrastructure 
+- Buildings
     
-    *Annexe 6 3.3.5.1* 
-    
-    Import data en csv
-    
-    calcul du CO2-eq
-    
-    Messages d’erreurs et validations
-    
-    Sauvegarde et historiques
-    
-    visualisation des data rentrées, avec filtres et graphiques
-    
-    implémentation des datas dans la DB
-    
-    gestion des accès/visualisations par utilisateurs
-    
-    Affichage de message si dépasse un certains seuils
-    
-    intégrer des explication sur les calculs
-    
-    Saisie bâtiments, ventilation, chauffage, éclairage
-    
-    occupation des locaux et surface de pièces correspondant au nom du labo auto avec un fichier csv métier
-    
-    Intégration des facteurs d'émission liés à la consommation électrique
-    
-    calcul CO2 avec le coeff du bâtiment (qui est dans un csv Métier)
-
+- Processes
     
 - Déploiement version Alpha α
 
