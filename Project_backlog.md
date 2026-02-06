@@ -255,7 +255,7 @@
     outil IA EPFL (optionnel)
 
     
-- Services Internes 
+- Research facilities 1/2 
     
     *Annexe 6 3.3.8* 
     
@@ -351,7 +351,7 @@
 [Specs] Définition des tests d'intégration
 
 ### ⚡S8 23.03 - 13.04
-
+- Research facilities 2/2 
 - Alimentation + Pendularité + Déchets
     
     calcul  avec data fourni par Métier et module labo
